@@ -1883,6 +1883,12 @@ body {
   }
 }
 
+@media (max-width: 576px) {
+  .hero-img {
+    margin-top: 25%;
+  }
+}
+
 
 /* Tombol kanan */
 .promo-footer {
