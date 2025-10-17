@@ -571,6 +571,7 @@ body {
   margin-top: 2rem;        /* jarak atas dari elemen lain */
   box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* shadow ringan */
   display: block;          /* pastikan card block */
+  padding: 35px 40px;
 }
 
 /* Optional: styling paragraf dalam card */
@@ -578,6 +579,24 @@ body {
   margin-bottom: 1rem;
   line-height: 1.7;
   color: #374151; /* text-gray-700 */
+}
+
+.single-product-specs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.single-product-specs li {
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #333;
+}
+
+.single-product-specs li span {
+  font-weight: 560;
+  color: #222;
+  margin-right: 4px;
 }
 
 
@@ -601,7 +620,6 @@ body {
 }
 
 .single-product-specs {
-  margin: 2rem 0 0; /* top spacing */
   padding-left: 1rem; /* untuk list agak masuk */
   margin-left: -5%;
 }
@@ -610,7 +628,7 @@ body {
   font-size: 1.125rem; /* 18px */
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #374151; /* biru gelap */
+  color: #1f2937; /* biru gelap */
 }
 
 .single-product-specs ul {
@@ -919,304 +937,6 @@ body {
     font-size: 1.5rem;
   }
 }
-
-
-
-/*  */
-
-
-/* =========================================================
-   SALLAVIA GADGET — SINGLE PRODUCT PAGE
-   ========================================================= */
-
-/* ===== GLOBAL ===== */
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: #f9fafb;
-  color: #1f2937;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* ===== CARD UTAMA ===== */
-.single-product-section {
-  padding: 6rem 0 3rem;
-  background: linear-gradient(to bottom, #f9fafb, #ffffff);
-}
-
-.single-product-card {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  background: #fff;
-  border-radius: 1.25rem;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  animation: fadeUp 0.6s ease;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== LAYOUT RESPONSIVE ===== */
-@media (min-width: 992px) {
-  .single-product-card {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 3rem;
-  }
-}
-
-/* ===== GALLERY ===== */
-.single-product-image {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.main-image-container {
-  width: 100%;
-  max-width: 420px;
-  aspect-ratio: 4/5;
-  border-radius: 1rem;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.main-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 1rem;
-  transition: transform 0.4s ease;
-}
-
-.main-image-container img:hover {
-  transform: scale(1.05);
-}
-
-/* Thumbnail gallery */
-.thumbnail-gallery {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.thumbnail-gallery img {
-  width: 60px;
-  height: 60px;
-  border-radius: 0.75rem;
-  object-fit: cover;
-  cursor: pointer;
-  border: 2px solid #e5e7eb;
-  transition: all 0.3s ease;
-}
-
-.thumbnail-gallery img:hover,
-.thumbnail-gallery img.active {
-  border-color: #2563eb;
-  transform: scale(1.1);
-}
-
-/* ===== INFO PRODUK ===== */
-.single-product-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.2rem;
-}
-
-.single-product-buttons2 a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: #2563eb;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-
-.single-product-buttons2 a:hover {
-  color: #1d4ed8;
-  transform: translateX(-3px);
-}
-
-.single-product-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #111827;
-}
-
-.single-product-price {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #2563eb;
-  margin-top: 0.25rem;
-}
-
-/* ===== SPESIFIKASI ===== */
-.single-product-specs {
-  background: #f9fafb;
-  padding: 1.2rem 1.5rem;
-  border-radius: 1rem;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
-  margin-top: 1.5rem;
-}
-
-.single-product-specs h2 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 0.75rem;
-}
-
-.single-product-specs ul {
-  list-style: disc inside;
-  margin: 0;
-  padding: 0;
-}
-
-.single-product-specs li {
-  font-size: 0.95rem;
-  margin-bottom: 0.4rem;
-  color: #374151;
-}
-
-/* ===== BUTTONS ===== */
-.single-product-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.btn-whatsapp {
-  background: #22c55e;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 0.75rem;
-  padding: 0.85rem 1rem;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  width: 100%;
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-  transition: all 0.3s ease;
-}
-
-.btn-whatsapp:hover {
-  background: #16a34a;
-  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
-  transform: translateY(-2px);
-}
-
-.btn-whatsapp i {
-  font-size: 1.1rem;
-}
-
-/* ===== DESKRIPSI ===== */
-.single-product-description {
-  width: 100%;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 1.25rem;
-  margin-top: 2rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  line-height: 1.8;
-}
-
-.single-product-description h2 {
-  font-weight: 700;
-  color: #2563eb;
-  margin-bottom: 1.2rem;
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.single-product-description p {
-  margin-bottom: 1rem;
-  color: #374151;
-}
-
-/* ===== RESPONSIVE ===== */
-
-/* 📱 Mobile */
-@media (max-width: 640px) {
-  .single-product-card {
-    padding: 1.5rem 1rem;
-  }
-
-  .single-product-title {
-    font-size: 1.4rem;
-  }
-
-  .single-product-price {
-    font-size: 1.3rem;
-  }
-
-  .single-product-specs li {
-    font-size: 0.9rem;
-  }
-
-  .btn-whatsapp {
-    padding: 0.9rem;
-  }
-
-  .single-product-description {
-    padding: 1.5rem;
-  }
-}
-
-/* 📲 Tablet */
-@media (min-width: 641px) and (max-width: 991px) {
-  .single-product-title {
-    font-size: 1.6rem;
-  }
-
-  .single-product-specs {
-    padding: 1rem 1.25rem;
-  }
-
-  .single-product-description {
-    padding: 1.8rem;
-  }
-}
-
-/* 💻 Desktop */
-@media (min-width: 992px) {
-  .single-product-title {
-    font-size: 2rem;
-  }
-
-  .single-product-description p {
-    font-size: 1.05rem;
-  }
-}
-
 
 
 /* PRODUCT */
