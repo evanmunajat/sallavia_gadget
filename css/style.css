@@ -1533,6 +1533,35 @@ body {
   }
 }
 
+/* RESPONSIF */
+@media (max-width: 400px) {
+  .categories {
+    margin-top: -20%;
+  }
+
+  .category-card {
+    width: 100px;
+    height: 100px;
+  }
+
+  .carousel {
+    gap: 1rem;
+    animation-duration: 18s;
+  }
+
+  .category-card i {
+    font-size: 1rem;
+  }
+
+  .categories h2 {
+    font-size: 26px;
+  }
+
+  .category-card h6 {
+    font-size: 0.5rem;
+  }
+}
+
 /* WRAPPER */
 .carousel-wrapper {
   overflow: hidden;
