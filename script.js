@@ -51,58 +51,91 @@ navLinks.forEach(link => {
   });
 
 
-// testimoni
 
-document.addEventListener("DOMContentLoaded", function() {
-  const prevBtn = document.querySelector(".carousel-buttons .prev");
-  const nextBtn = document.querySelector(".carousel-buttons .next");
-  const group = document.querySelector(".testimoni-group");
-  const cards = document.querySelectorAll(".card");
-
-  const cardWidth = cards[0].offsetWidth + 16; // width + gap
-  let currentIndex = 0;
-
-  const maxIndex = cards.length - Math.floor(document.querySelector(".carousel-wrapper").offsetWidth / cardWidth);
-
-  function updateCarousel() {
-    group.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-  }
-
-  nextBtn.addEventListener("click", () => {
-    if(currentIndex < maxIndex) {
-      currentIndex++;
-      updateCarousel();
-    }
-  });
-
-  prevBtn.addEventListener("click", () => {
-    if(currentIndex > 0) {
-      currentIndex--;
-      updateCarousel();
-    }
-  });
-});
-
-
-// hambuger togle 
+// Hamburger toggle
 const toggler = document.querySelector('.custom-toggler');
+const navMenu = document.querySelector('.navbar-nav'); // ambil elemen menu
 
 toggler.addEventListener('click', function() {
   this.classList.toggle('active');
+  navMenu.classList.toggle('show'); // toggle class buat munculin menu
 });
 
+// 
 
- function changeMainImage(src) {
-    const mainImage = document.getElementById('mainImage');
-    mainImage.style.opacity = 0;
-    setTimeout(() => {
-      mainImage.src = src;
-      mainImage.style.opacity = 1;
-    }, 200);
+  const carousel = document.getElementById('carousel-testimoni');
+  const carouselGroup = carousel.querySelector('.testimoni-group');
 
-    // ubah border aktif
-    document.querySelectorAll('.thumb-image').forEach(img => {
-      img.classList.remove('active');
-    });
-    event.target.classList.add('active');
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  // Auto scroll perlahan
+  let autoScrollSpeed = 0.5; // px per frame
+  let autoScroll;
+
+  function startAutoScroll() {
+    autoScroll = requestAnimationFrame(scrollLoop);
   }
+
+  function scrollLoop() {
+    if (!isDragging) {
+      carousel.scrollLeft += autoScrollSpeed;
+      // Loop kembali ke awal kalau sudah sampai akhir
+      if (carousel.scrollLeft >= carouselGroup.scrollWidth - carousel.offsetWidth) {
+        carousel.scrollLeft = 0;
+      }
+    }
+    requestAnimationFrame(scrollLoop);
+  }
+
+  // Drag dengan mouse
+  carousel.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+    carousel.style.cursor = 'grabbing';
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+    isDragging = false;
+    carousel.style.cursor = 'grab';
+  });
+
+  carousel.addEventListener('mouseup', () => {
+    isDragging = false;
+    carousel.style.cursor = 'grab';
+  });
+
+  carousel.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 2; // scroll-fast
+    carousel.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch support untuk HP
+  carousel.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
+
+  carousel.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+
+  carousel.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 2;
+    carousel.scrollLeft = scrollLeft - walk;
+  });
+
+  // Start auto scroll
+  startAutoScroll();
+
+  // Styling cursor
+  carousel.style.cursor = 'grab';
+
